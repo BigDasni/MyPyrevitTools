@@ -1,0 +1,12 @@
+
+└─ MyTools.extension\
+   ├─ **extension.yaml**
+   └─ MyTab.tab\
+      ├─ GreenBuilding.panel\
+      │  └─ WindowOrientation.pushbutton\
+      │     ├─ **bundle.yaml**
+      │     └─ **script.py**
+      └─ Import.panel\
+         └─ Import from CSV.pushbutton\
+            ├─ **pushbutton.yaml**
+            └─ **script.py**
