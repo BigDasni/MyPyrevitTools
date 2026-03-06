@@ -1,4 +1,4 @@
-title: Import from CSV
+title: Import Sheet
 author: CP
 tooltip: 從 CSV 讀取資料，依「對應鍵欄」比對元素後，將選定欄位寫回 Revit 參數。
 highlight: true

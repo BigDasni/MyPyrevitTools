@@ -1,0 +1,5 @@
+title: Export Room CSV
+author: CP
+tooltip: 擷取專案中所有房間的各種參數，並匯出成 CSV 檔案（使用 utf-8-sig 編碼，方便 Excel 開啟）。
+highlight: true
+context: doc-project

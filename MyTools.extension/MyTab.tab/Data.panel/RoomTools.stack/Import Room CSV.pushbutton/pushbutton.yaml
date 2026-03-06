@@ -1,0 +1,5 @@
+title: Import Room CSV
+author: CP
+tooltip: 讀取 CSV 檔案，使用指定的「對應鍵」（例如房間編號）將資料回寫至 Revit 的房間參數中。
+highlight: true
+context: doc-project
