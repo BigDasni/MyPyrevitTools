@@ -44,5 +44,16 @@
   - **支援單位系統解析**: 自動透過 Revit 的 UnitUtils 單位系統解析帶有單位的字串，並正確轉換回 Revit 內部數值（不用擔心長度、面積等出現英制亂碼）。
   - **避免唯讀屬性錯誤**: 排除強制寫入唯讀屬性（如面積），並確保寫回安全。
 
+### Areas 面板工具 (空間邊界/尺度設定)
+
+#### 5. Boundary create (自動建立房間邊界與標註)
+- **位置**: `MyTab` 標籤 -> `Areas` 面板 
+- **功能描述**:
+  自動選取 Revit 內的房間（Rooms），並依據需求在指定的目標平面視圖（如 Area Plans 等）中建立對應的細部線（Detail Curves）、面積邊界線（Area Boundary Lines）以及長度標註（Length Dimensions），同時可自訂文字註記類型。
+- **特色亮點**:
+  - **多功能建立**: 提供勾選選項，自動轉換房間幾何邊界並繪製出對應的細部線或面積邊界線。
+  - **跨視圖處理**: 支援選擇不同的 Level 與對應的 Target View（優先考量 Area Plans），直接將線條與標註建立在正確的視圖上。
+  - **預設防呆與錯誤處理**: 全程透過 Revit API 精確抓取邊界（包含曲線等幾何），並內建重複標註的防護機制。
+
 ## 📥 安裝與路徑設定
 工具已經封裝為 `MyTools.extension` 擴充套件格式。可以透過 pyRevit 設定管理員 (Settings -> Custom Extension Directories) 將此資料夾的路徑加入，並重新載入 (Reload) 以在上方選單列顯示 `MyTab` 標籤。
