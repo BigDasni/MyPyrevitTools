@@ -55,6 +55,9 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
 
 ### Sheet 面板工具 (圖紙/圖框管理) / Sheet Panel Tools (Sheet/Titleblock Management)
 
+> 此面板的工具以垂直疊排 (Stack) 方式顯示於 Revit Ribbon。
+> Tools in this panel are displayed as a vertical stack in the Revit Ribbon.
+
 #### 5. Change TitleBlock (批次更換圖框 / Batch Change TitleBlock)
 - **位置 / Location**: `MyTab` tab -> `Sheet` panel
 - **功能描述 / Description**:
@@ -66,7 +69,17 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
   - **Safe Replacement (安全替換)**: Preserves element positions and parameters using `ChangeTypeId()`.
   - **Smart Skip (智慧跳過)**: Skips sheets that already have the target TitleBlock applied.
 
----
+#### 6. Sync Viewport Pos (同步視圖位置 / Sync Viewport Position)
+- **位置 / Location**: `MyTab` tab -> `Sheet` panel
+- **功能描述 / Description**:
+  Uses a selected Viewport on the active sheet as the position reference, then batch-applies its XY center coordinate to matching Viewports on other selected sheets. Supports keyword search for filtering view names.
+  以目前圖紙上選取的視圖 (Viewport) 位置為基準，批次將其 XY 中心座標套用至其他圖紙上的對應視圖。支援輸入關鍵字搜尋視圖名稱，適用於「YY Plan」、「XX Section」等命名規則的大量視圖對位。
+- **特色亮點 / Key Features**:
+  - **Keyword Filter (關鍵字搜尋)**: Filter viewports by name keyword (e.g. "plan", "section") across all target sheets.
+  - **Multi-sheet Apply (多圖紙批次套用)**: Select multiple target sheets from a list dialog.
+  - **Ambiguity Handling (多重匹配處理)**: When multiple viewports match the keyword on a sheet, prompts the user to choose the correct one.
+  - **XY-only Sync (僅同步 XY)**: Preserves each viewport's Z value; only overrides X and Y position.
+  - **Result Report (執行結果報告)**: Shows a summary of successfully updated sheets and skipped sheets after completion.
 
 ### Areas 面板工具 (空間邊界/尺度設定) / Areas Panel Tools (Space Boundaries/Dimensions)
 

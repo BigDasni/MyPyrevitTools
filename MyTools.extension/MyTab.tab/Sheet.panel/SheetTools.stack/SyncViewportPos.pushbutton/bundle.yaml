@@ -1,0 +1,3 @@
+title: "Sync Viewport Pos"
+tooltip: "以某張圖紙上的視圖位置為基準，批次同步其他圖紙上的同類視圖位置。支援關鍵字搜尋視圖。"
+author: "Antigravity"
