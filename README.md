@@ -1,8 +1,8 @@
 # MyPyrevitTools (MyTab)
 
-This repository contains multiple custom pyRevit tools, primarily divided into four main panels: **GreenBuilding**, **Data**, **Sheet**, and **Areas**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch management of sheet title blocks, and automatic creation of spatial boundaries.
+This repository contains multiple custom pyRevit tools, primarily divided into five main panels: **GreenBuilding**, **Data**, **Sheet**, **Areas**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch management of sheet title blocks, automatic creation of spatial boundaries, and line geometry tools for closing open corners.
 
-此資料夾包含多個自訂的 pyRevit 工具，主要分為四大面板：**GreenBuilding**、**Data**、**Sheet** 與 **Areas**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、圖紙圖框批次管理，以及空間邊界自動建立功能。
+此資料夾包含多個自訂的 pyRevit 工具，主要分為五大面板：**GreenBuilding**、**Data**、**Sheet**、**Areas** 與 **Line Work**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、圖紙圖框批次管理、空間邊界自動建立，以及線段幾何工具（閉合開口轉角）。
 
 ## 🛠️ 工具清單與功能說明 / Tool List and Features
 
@@ -69,7 +69,7 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
   - **Safe Replacement (安全替換)**: Preserves element positions and parameters using `ChangeTypeId()`.
   - **Smart Skip (智慧跳過)**: Skips sheets that already have the target TitleBlock applied.
 
-#### 6. Sync Viewport Pos (同步視圖位置 / Sync Viewport Position)
+#### 7. Sync Viewport Pos (同步視圖位置 / Sync Viewport Position)
 - **位置 / Location**: `MyTab` tab -> `Sheet` panel
 - **功能描述 / Description**:
   Uses a selected Viewport on the active sheet as the position reference, then batch-applies its XY center coordinate to matching Viewports on other selected sheets. Supports keyword search for filtering view names.
@@ -83,8 +83,8 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
 
 ### Areas 面板工具 (空間邊界/尺度設定) / Areas Panel Tools (Space Boundaries/Dimensions)
 
-#### 6. Boundary create (自動建立房間邊界與標註 / Auto-create Room Boundaries and Dimensions)
-- **位置 / Location**: `MyTab` tab -> `Areas` panel 
+#### 8. Boundary create (自動建立房間邊界與標註 / Auto-create Room Boundaries and Dimensions)
+- **位置 / Location**: `MyTab` tab -> `Areas` panel
 - **功能描述 / Description**:
   Automatically selects Rooms in Revit and generates Detail Curves, Area Boundary Lines, and Length Dimensions in target plan views (like Area Plans) based on user requirements.
   自動選取 Revit 內的房間（Rooms），並依據需求在指定的目標平面視圖中建立對應的細部線、面積邊界線以及長度標註。
@@ -92,6 +92,24 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
   - **Multi-functional Creation (多功能建立)**: Converts room geometry boundaries to detail or area boundary lines.
   - **Cross-view Processing (跨視圖處理)**: Supports different Levels and Target Views (prioritizing Area Plans).
   - **Error Handling & Prevention (預設防呆與錯誤處理)**: Accurately grabs boundaries via Revit API with duplicate dimension prevention.
+
+---
+
+### Line Work 面板工具 (線段幾何工具) / Line Work Panel Tools (Line Geometry)
+
+#### 9. Chamfer Lines (延伸線段至交點封閉轉角 / Extend Lines to Intersection)
+- **位置 / Location**: `MyTab` tab -> `Line Work` panel
+- **功能描述 / Description**:
+  Selects multiple line segments (Detail Lines, Room Separation Lines, or Area Boundary Lines) and automatically extends each line's near-endpoint to the mathematical intersection with its neighbouring line, closing open corners cleanly in a single transaction.
+  選取多條線段（Detail Lines、Room Separation Lines、Area Boundary Lines），自動計算相鄰線段的延伸交點，並將各線端點移動到該交點，以一次 Transaction 完成所有開口轉角的封閉。
+- **特色亮點 / Key Features**:
+  - **Multi-type Support (多線型支援)**: Works with Detail Lines, Room Boundary, and Area Boundary lines in one operation.
+  - **Interactive or Pre-select (互動式或預選)**: Pre-select lines before running, or pick interactively after launching the tool.
+  - **Adjustable Gap Threshold (可調整端點偵測閾值)**: User inputs the gap-detection distance (default 100 mm) each run.
+  - **Exact Intersection (精確數學交點)**: Uses 2-D parametric line intersection; parallel lines are automatically skipped with a report.
+  - **Safe Undo (單一 Transaction / Undo 安全)**: All changes are wrapped in one transaction — a single Ctrl+Z restores everything.
+
+---
 
 ## 📥 安裝與路徑設定 / Installation and Path Configuration
 The tools are packaged as a `MyTools.extension` extension. Add the path of this folder via the pyRevit Settings Manager (Settings -> Custom Extension Directories) and Reload to show the `MyTab` tab in the top menu.

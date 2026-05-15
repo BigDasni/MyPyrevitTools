@@ -1,0 +1,3 @@
+title: "Chamfer Lines"
+tooltip: "Select line segments (Detail Lines, Room Boundary, Area Boundary) and extend them to their intersection points to close open corners."
+author: "Antigravity"
