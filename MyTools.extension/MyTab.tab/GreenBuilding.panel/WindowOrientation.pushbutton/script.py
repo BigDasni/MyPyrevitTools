@@ -302,9 +302,7 @@ for kind, e in items:
             continue
 
         if use_true_north:
-            facing = transform_vector(doc.ActiveProjectLocation.GetTotalTransform(), facing)  # 保留你的總變換
-            # 但你真北換算以 Angle 為準（已驗證用 ang）
-            facing = DB.XYZ(facing.X, facing.Y, 0).Normalize()
+            # 真北換算以 Angle 為準（已驗證用 ang）
             facing = DB.XYZ(
                 facing.X*math.cos(ang) - facing.Y*math.sin(ang),
                 facing.X*math.sin(ang) + facing.Y*math.cos(ang),

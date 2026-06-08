@@ -112,22 +112,16 @@ def set_param_value(param, val):
         else:
             # Try to parse string with units back to internal Double
             try:
-                # Revit 2021+ provides UnitUtils.TryParse
-                unit_id = param.Definition.GetUnitTypeId()
-                parsed_val = doc.Application.Create.NewProjectDocument(DB.UnitSystem.Metric).GetUnits()
                 # Use SetValueString which handles built-in unit conversion nicely
                 success = param.SetValueString(val)
                 if not success:
                     # Fallback to direct float cast if SetValueString fails (e.g., pure number string)
                     param.Set(float(val))
             except Exception:
-                # Fallback for older versions or if GetUnitTypeId fails
                 try:
-                    success = param.SetValueString(val)
-                    if not success:
-                        param.Set(float(val))
-                except:
                     param.Set(float(val))
+                except Exception as e:
+                    raise e
     else:
         # 其他型別 (例如 ElementId)，直接用字串嘗試寫入通常會失敗
         param.Set(val)

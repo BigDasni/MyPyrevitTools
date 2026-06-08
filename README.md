@@ -1,8 +1,8 @@
 # MyPyrevitTools (MyTab)
 
-This repository contains multiple custom pyRevit tools, primarily divided into five main panels: **GreenBuilding**, **Data**, **Sheet**, **Areas**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch management of sheet title blocks, automatic creation of spatial boundaries, and line geometry tools for closing open corners.
+This repository contains multiple custom pyRevit tools, primarily divided into five main panels: **GreenBuilding**, **Data**, **Sheet**, **Rooms**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch management of sheet title blocks, automatic creation of spatial boundaries, and line geometry tools for closing open corners.
 
-此資料夾包含多個自訂的 pyRevit 工具，主要分為五大面板：**GreenBuilding**、**Data**、**Sheet**、**Areas** 與 **Line Work**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、圖紙圖框批次管理、空間邊界自動建立，以及線段幾何工具（閉合開口轉角）。
+此資料夾包含多個自訂的 pyRevit 工具，主要分為五大面板：**GreenBuilding**、**Data**、**Sheet**、**Rooms** 與 **Line Work**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、圖紙圖框批次管理、空間邊界自動建立，以及線段幾何工具（閉合開口轉角）。
 
 ## 🛠️ 工具清單與功能說明 / Tool List and Features
 
@@ -81,10 +81,10 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
   - **XY-only Sync (僅同步 XY)**: Preserves each viewport's Z value; only overrides X and Y position.
   - **Result Report (執行結果報告)**: Shows a summary of successfully updated sheets and skipped sheets after completion.
 
-### Areas 面板工具 (空間邊界/尺度設定) / Areas Panel Tools (Space Boundaries/Dimensions)
+### Rooms 面板工具 (空間邊界/尺度設定) / Rooms Panel Tools (Space Boundaries/Dimensions)
 
 #### 8. Boundary create (自動建立房間邊界與標註 / Auto-create Room Boundaries and Dimensions)
-- **位置 / Location**: `MyTab` tab -> `Areas` panel
+- **位置 / Location**: `MyTab` tab -> `Rooms` panel
 - **功能描述 / Description**:
   Automatically selects Rooms in Revit and generates Detail Curves, Area Boundary Lines, and Length Dimensions in target plan views (like Area Plans) based on user requirements.
   自動選取 Revit 內的房間（Rooms），並依據需求在指定的目標平面視圖中建立對應的細部線、面積邊界線以及長度標註。
