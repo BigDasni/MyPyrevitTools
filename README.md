@@ -83,8 +83,11 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
 
 ### Rooms 面板工具 (空間邊界/尺度設定) / Rooms Panel Tools (Space Boundaries/Dimensions)
 
+> 此面板的工具以垂直疊排 (Stack) 方式顯示於 Revit Ribbon。
+> Tools in this panel are displayed as a vertical stack in the Revit Ribbon.
+
 #### 8. Boundary create (自動建立房間邊界與標註 / Auto-create Room Boundaries and Dimensions)
-- **位置 / Location**: `MyTab` tab -> `Rooms` panel
+- **位置 / Location**: `MyTab` tab -> `Rooms` panel -> `Rooms` stack
 - **功能描述 / Description**:
   Automatically selects Rooms in Revit and generates Detail Curves, Area Boundary Lines, and Length Dimensions in target plan views (like Area Plans) based on user requirements.
   自動選取 Revit 內的房間（Rooms），並依據需求在指定的目標平面視圖中建立對應的細部線、面積邊界線以及長度標註。
@@ -93,11 +96,21 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
   - **Cross-view Processing (跨視圖處理)**: Supports different Levels and Target Views (prioritizing Area Plans).
   - **Error Handling & Prevention (預設防呆與錯誤處理)**: Accurately grabs boundaries via Revit API with duplicate dimension prevention.
 
+#### 9. Place Room by (對齊放置房間 / Place Rooms By Reference)
+- **位置 / Location**: `MyTab` tab -> `Rooms` panel -> `Rooms` stack
+- **功能描述 / Description**:
+  Batch places new rooms on target levels at the exact same XY coordinates as selected rooms from a reference level. Automatically copies Name, Department, and Comments, and applies flexible room numbering rules (e.g., smart first-digit substitution for floors).
+  在不同的相似目標樓層中，依據所選參考樓層的房間配置，在相同的平面 XY 坐標處自動對齊放置房間。同時複製房間的名稱、部門、註解，並提供彈性的房號變更規則（如智能替換首字，101 變 201）。
+- **特色亮點 / Key Features**:
+  - **Smart Renumbering (智能房號規則)**: Supports "Smart first-digit substitution" (e.g., 101 -> 201 on 2F), "Keep same", and "Add prefix" options.
+  - **Parameter Synchronization (參數同步複製)**: Automatically copies Name, Department, and Comments parameters.
+  - **Skip Non-enclosed Regions (防呆跳過非封閉區)**: Gracefully skips coordinates that are not enclosed, summarizing them in a final execution report without crashing.
+
 ---
 
 ### Line Work 面板工具 (線段幾何工具) / Line Work Panel Tools (Line Geometry)
 
-#### 9. Chamfer Lines (延伸線段至交點封閉轉角 / Extend Lines to Intersection)
+#### 10. Chamfer Lines (延伸線段至交點封閉轉角 / Extend Lines to Intersection)
 - **位置 / Location**: `MyTab` tab -> `Line Work` panel
 - **功能描述 / Description**:
   Selects multiple line segments (Detail Lines, Room Separation Lines, or Area Boundary Lines) and automatically extends each line's near-endpoint to the mathematical intersection with its neighbouring line, closing open corners cleanly in a single transaction.

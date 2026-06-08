@@ -1,0 +1,3 @@
+title: "Place Room by"
+tooltip: "選擇一個參考樓層，依據其房間配置在其他類似樓層的相同坐標自動放置並命名房間。"
+author: "Antigravity"
