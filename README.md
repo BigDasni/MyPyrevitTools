@@ -81,6 +81,20 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
   - **XY-only Sync (僅同步 XY)**: Preserves each viewport's Z value; only overrides X and Y position.
   - **Result Report (執行結果報告)**: Shows a summary of successfully updated sheets and skipped sheets after completion.
 
+---
+
+### Site 面板工具 (共享座標設定) / Site Panel Tools (Shared Coordinates)
+
+#### 6. Set TW97 Shared Coordinates (設定 TW97 共享座標 / Set TW97 Shared Coordinates)
+- **位置 / Location**: `MyTab` tab -> `Site` panel
+- **功能描述 / Description**:
+  Sets the TW97 shared coordinates (Easting/X, Northing/Y, Elevation/Z, and True North angle) for the Revit project. Coordinates are input in meters and automatically converted to Revit's internal units (feet and radians), aligning the project position with the Internal Origin.
+  透過輸入台灣 TWD97 二度分帶座標系統（X=Easting, Y=Northing）、高程（Elevation/Z）與真北旋轉角度，設定 Revit 專案的共享座標。輸入單位為公尺，系統會自動轉換為 Revit 內部單位（feet 與弧度），並以 Internal Origin（內部原點）作為對應參考基準。
+- **特色亮點 / Key Features**:
+  - **DMS Angle Input (DMS 角度輸入)**: Allows entering the Angle from Project North to True North in Degrees-Minutes-Seconds (DMS) format, matching Revit's native Location and Site dialog.
+  - **East/West Direction Dropdown (東西向下拉選單)**: Offers East/West selection for angle direction compatibility.
+  - **Safe Transaction (安全交易機制)**: Wrapped in a Revit API Transaction to ensure database integrity.
+
 ### Rooms 面板工具 (空間邊界/尺度設定) / Rooms Panel Tools (Space Boundaries/Dimensions)
 
 > 此面板的工具以垂直疊排 (Stack) 方式顯示於 Revit Ribbon。
