@@ -1,6 +1,6 @@
 # MyPyrevitTools (MyTab)
 
-This repository contains multiple custom pyRevit tools, primarily divided into five main panels: **GreenBuilding**, **Data**, **Sheet**, **Rooms**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch management of sheet title blocks, automatic creation of spatial boundaries, and line geometry tools for closing open corners.
+This repository contains multiple custom pyRevit tools, primarily divided into six main panels: **GreenBuilding**, **Data**, **Views edit**, **Sheet**, **Rooms**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch editing view data, batch management of sheet title blocks, automatic creation of spatial boundaries, and line geometry tools for closing open corners.
 
 此資料夾包含多個自訂的 pyRevit 工具，主要分為五大面板：**GreenBuilding**、**Data**、**Sheet**、**Rooms** 與 **Line Work**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、圖紙圖框批次管理、空間邊界自動建立，以及線段幾何工具（閉合開口轉角）。
 
@@ -50,6 +50,32 @@ This repository contains multiple custom pyRevit tools, primarily divided into f
 - **特色亮點 / Key Features**:
   - **Unit System Parsing (支援單位系統解析)**: Parses strings with units via Revit's UnitUtils to ensure correct internal values.
   - **Read-Only Protection (避免唯讀屬性錯誤)**: Safely ignores read-only properties (like Area) to ensure smooth execution.
+
+---
+
+### Views edit Panel Tools (View CSV Export/Import)
+
+> Tools in this panel are displayed as a vertical stack in the Revit Ribbon.
+
+#### Export views CSV
+- **Location**: `MyTab` tab -> `Views edit` panel -> `Views` stack
+- **Description**:
+  Exports project view data to a UTF-8 CSV file for editing in Excel. The exported CSV includes `ElementId`, `UniqueId`, `View Type`, and `Current View Name` as reference columns, then appends user-selected view parameters.
+- **Key Features**:
+  - **Stable matching columns**: Includes both `UniqueId` and `ElementId` so edited rows can be matched back to the original Revit views during import.
+  - **Editable parameter selection**: Lets users choose which view parameters to export.
+  - **View-focused collection**: Excludes sheets, view templates, and internal browser views while keeping normal project views and schedule views.
+  - **Excel-friendly CSV**: Writes UTF-8 with BOM for smoother Traditional Chinese and mixed-language editing in Excel.
+
+#### Import views CSV
+- **Location**: `MyTab` tab -> `Views edit` panel -> `Views` stack
+- **Description**:
+  Imports edited view CSV files back into Revit. The tool matches rows by `UniqueId` first and falls back to `ElementId`, then lets users select which CSV columns should be written back.
+- **Key Features**:
+  - **Safe view matching**: Uses `UniqueId` first, with `ElementId` as a fallback.
+  - **Column-level control**: Lets users choose which columns to import, avoiding accidental edits.
+  - **View name updates**: Supports renaming views through the `View Name` column.
+  - **Protected reference columns**: Keeps `ElementId`, `UniqueId`, `View Type`, and `Current View Name` as read-only reference columns during import.
 
 ---
 

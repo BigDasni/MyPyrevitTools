@@ -1,0 +1,5 @@
+title: Import views CSV
+author: CP
+tooltip: Import edited view parameters from a CSV exported by Export views CSV.
+highlight: true
+context: doc-project

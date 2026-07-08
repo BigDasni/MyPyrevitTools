@@ -1,0 +1,5 @@
+title: Export views CSV
+author: CP
+tooltip: Export project view parameters to a UTF-8 CSV file for editing and later import.
+highlight: true
+context: doc-project
