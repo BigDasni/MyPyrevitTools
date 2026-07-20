@@ -1,8 +1,8 @@
 # MyPyrevitTools (MyTab)
 
-This repository contains multiple custom pyRevit tools, primarily divided into six main panels: **GreenBuilding**, **Data**, **Views edit**, **Sheet**, **Rooms**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch editing view data, batch management of sheet title blocks, automatic creation of spatial boundaries, and line geometry tools for closing open corners.
+This repository contains multiple custom pyRevit tools, primarily divided into seven main panels: **GreenBuilding**, **Data**, **Views edit**, **Sheet**, **Rooms**, **Model**, and **Line Work**. These panels provide functionalities for calculating window areas for green building daily energy saving indicators, bidirectional export and import of Revit parameters with external CSV spreadsheets, batch editing view data, batch management of sheet title blocks, automatic creation of spatial boundaries, exporting painted model face boundaries for Rhino/D5 workflows, and line geometry tools for closing open corners.
 
-此資料夾包含多個自訂的 pyRevit 工具，主要分為五大面板：**GreenBuilding**、**Data**、**Sheet**、**Rooms** 與 **Line Work**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、圖紙圖框批次管理、空間邊界自動建立，以及線段幾何工具（閉合開口轉角）。
+此資料夾包含多個自訂的 pyRevit 工具，主要分為七大面板：**GreenBuilding**、**Data**、**Views edit**、**Sheet**、**Rooms**、**Model** 與 **Line Work**，分別提供綠建築日常節能指標檢核的開窗面積計算、Revit 參數與外部 CSV 表單的雙向匯出與匯入回寫功能、視圖資料批次編輯、圖紙圖框批次管理、空間邊界自動建立、模型 Paint / Split Face 邊界匯出，以及線段幾何工具（閉合開口轉角）。
 
 ## 🛠️ 工具清單與功能說明 / Tool List and Features
 
@@ -148,9 +148,26 @@ This repository contains multiple custom pyRevit tools, primarily divided into s
 
 ---
 
+### Model 面板工具 (模型幾何匯出) / Model Panel Tools (Model Geometry Export)
+
+#### 10. Export Painted Faces (匯出 Split Face / Paint 邊界給 Rhino)
+- **位置 / Location**: `MyTab` tab -> `Model` panel
+- **功能描述 / Description**:
+  Exports Revit faces that were split with Split Face and assigned materials with Paint into Rhino-friendly boundary files. The recommended output is DXF boundary curves for editing and rebuilding clean planar surfaces in Rhino; optional OBJ/MTL export is also available as a triangulated visual/material reference.
+  將 Revit 中使用 Split Face 分割並以 Paint 指定材質的面匯出為 Rhino 友善的邊界檔案。建議使用 DXF 邊界曲線做後續編輯與重建乾淨平面；OBJ/MTL 則可作為三角網格的視覺與材質參考。
+- **主要功能 / Key Features**:
+  - **DXF boundary export**: Writes each painted face or Split Face region as closed 3D polyline boundary loops, using millimeter coordinates.
+  - **Split Face region support**: Reads `Face.HasRegions` and `Face.GetRegions()` so split-and-painted regions export separately instead of one large host face.
+  - **Material layers**: Places each Paint material on its own DXF layer with an ASCII-safe layer key, while the summary CSV preserves the original Revit material name.
+  - **OBJ reference export**: Optionally exports triangulated OBJ mesh plus MTL material data for visual checking, not primary Rhino editing.
+  - **Export scopes**: Supports selected elements, visible elements in the active view, or the entire model.
+  - **Rhino workflow**: Import DXF, select loops by material layer, then use `Join` and `PlanarSrf` to rebuild editable planar surfaces for downstream SketchUp / D5 render workflows.
+
+---
+
 ### Line Work 面板工具 (線段幾何工具) / Line Work Panel Tools (Line Geometry)
 
-#### 10. Chamfer Lines (延伸線段至交點封閉轉角 / Extend Lines to Intersection)
+#### 11. Chamfer Lines (延伸線段至交點封閉轉角 / Extend Lines to Intersection)
 - **位置 / Location**: `MyTab` tab -> `Line Work` panel
 - **功能描述 / Description**:
   Selects multiple line segments (Detail Lines, Room Separation Lines, or Area Boundary Lines) and automatically extends each line's near-endpoint to the mathematical intersection with its neighbouring line, closing open corners cleanly in a single transaction.
