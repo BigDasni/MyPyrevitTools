@@ -1,0 +1,4 @@
+title: Export Painted Faces
+tooltip: Export Revit painted faces as DXF boundary curves for Rhino editing, with optional OBJ mesh reference.
+author: CP
+context: doc-project
